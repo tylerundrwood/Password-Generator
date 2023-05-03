@@ -1,6 +1,5 @@
 // Assignment code here
-function randomCharacter(list) {
-  console.log("Button pressed!");
+function randomListCharacter(list) {
   return list[randomInteger(list.length)];
 }
  
@@ -34,8 +33,6 @@ let numbers = window.confirm("Would you like to use numbers in your password?");
 let alpha = window.confirm("Would you like to use upper and lower case letters in your password?");// aplha yes/no
 let symbol = window.confirm("would you like to use special characters or symbols in your password");// symbol yes/no
 
-
-
 let alphaList= ['a', 'A', 'b', 'B', 'c', 'C', 'd', 'e', 'f', 'F', 'g', 'G', 'h', 'H', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'o', 'O', 'p', 'P', 'q', 'Q', 'r', 'R', 's', 'S', 't', 'T', 'u', 'U', 'v', 'V', 'w', 'x', 'X', 'y', 'Y', 'z', 'Z'];// of letters that could be used in the password
 let numberList = [0,1,2,3,4,5,6,7,8,9];// list of numbers that could be used in the password
 let symbolList = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '~', '|', '}', '{', '[',']', '?', '>', '<', '/', '-', '='];// list of symbols that could be used in the password
@@ -47,9 +44,11 @@ if (numbers === true) { // if user selects yes for number in password, add numbe
 }
 
 if (alpha === true) { // if user selects yes for letters in password, add letter list to array
+userChoices.push(alphaList);
 }
 
 if (symbol === true) { // if user selects yes for special characters/symbols in password, add symbols list to array
+userChoices.push(symbolList);
 }
 
 if (userChoices.length === 0) { // if user selects no for all options for the password, redeploy them to the start of choices
@@ -60,8 +59,8 @@ return writePassword();
 let generatePassword = ''; // empty array where the randomly created password will go
 
 for (let x = 0; x < passwordLength; x++) {
-  let randomListCharacter = randomCharacter(userChoices);
-  let randomCharacter = randomListItem(randomListCharacter);
+  let randomList = randomListCharacter(userChoices);
+  let randomCharacter = randomListCharacter(randomList);
   generatePassword += randomCharacter;
 }
 
@@ -82,3 +81,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
